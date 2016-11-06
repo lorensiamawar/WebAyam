@@ -1,0 +1,57 @@
+﻿@model WebAyam.Models.Barang
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dd>
+            <img src="~/Content/Image/@Model.gambar" /><br />
+        </dd>
+
+        <dt>
+            Nama Barang
+        </dt>
+
+        <dd>
+            <strong>@Html.DisplayFor(model => model.nama_barang)</strong>
+        </dd>
+
+        <dt>
+            Satuan
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.satuan)
+        </dd>
+
+        <dt>
+            Harga Jual
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.harga_jual)
+        </dd>
+
+        <dt>
+            Stok
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stok)
+        </dd>
+
+
+        <dt>&nbsp;</dt>
+        <dd>
+            <a href="~/ShoppingCarts/Tambah/@Html.DisplayFor(model => model.id_barang)" class="btn btn-success btn-xs">Tambah ke Keranjang</a>
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Kembali ke Daftar Barang", "Index")
+</p>

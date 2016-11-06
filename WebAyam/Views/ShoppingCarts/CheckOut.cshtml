@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebAyam.Models.ShoppingCarts>
+
+@{
+    ViewBag.Title = "CheckOut";
+}
+
+<h2>CheckOut</h2>
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Barang.id_barang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Barang.nama_barang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Barang.harga_jual)
+        </th>
+        <th>
+            Subtotal
+        </th>
+
+    </tr>
+    @{ decimal total = 0;}
+    @foreach (var item in Model)
+    {
+        var price = string.Format("{0:N0}", item.Barang.harga_jual);
+        var subtotal = item.Quantity * item.Barang.harga_jual;
+        total += subtotal;
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Barang.id_barang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Barang.nama_barang)
+            </td>
+            <td class="text-right">
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td class="text-right">
+                @price
+            </td>
+            <td class="text-right">
+                @string.Format("{0:N0}", subtotal)
+            </td>
+
+        </tr>
+    }
+       
+    
+
+</table>
+<p class="text-right">
+    <strong>
+        Total : @string.Format("{0:N0}", total)
+    </strong>
+</p>
+<a href="~/Pemesanan/Create" class="btn btn-success">Lanjutkan ke Pembayaran</a>
+<br /><br />
+<div>
+    @Html.ActionLink("Back To List", "Index", "Books")
+</div>

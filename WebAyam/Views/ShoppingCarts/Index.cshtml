@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebAyam.Models.ShoppingCarts>
+
+@{
+    ViewBag.Title = "ShoppingCart";
+}
+
+<h2>Keranjang Belanja</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.id_barang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Barang.nama_barang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Barang.harga_jual)
+        </th>
+        <th>Subtotal</th>
+    </tr>
+@{ decimal total = 0;}
+
+@foreach (var item in Model)
+{
+    var price = string.Format("{0:N0}", item.Barang.harga_jual);
+    var subtotal = item.Quantity * item.Barang.harga_jual;
+    total += subtotal;
+   
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Barang.id_barang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Barang.nama_barang)
+        </td>
+        <td class="text-right">
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td class="text-right">
+            @price
+        </td>
+        <td class="text-right">
+            @string.Format("{0:N0}", subtotal)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.RecordID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.RecordID })
+           
+        </td>
+         
+    </tr>
+    <tr>
+       
+    </tr>
+
+}
+ 
+</table>
+<a href="~/ShoppingCarts/CheckOut" class="btn btn-success">Check Out</a>

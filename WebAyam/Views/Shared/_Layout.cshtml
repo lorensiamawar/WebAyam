@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Niwatori Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Ayam Potong Pak Yosep", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Beranda", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Tentang Kami", "About", "Home")</li>
+                    <li>@Html.ActionLink("Produk", "Index", "Barang")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="padding: 1em;
+            color: white;
+            background-color: black;
+            clear: left;
+            text-align: left;">
+            <div class="col-md-6">
+                <h4>Layanan Pelanggan</h4>
+
+                @Html.ActionLink("Cara Pemesanan", "About", "Home")
+                <br />
+
+                @Html.ActionLink("Pengiriman", "About", "Home")
+
+            </div>
+
+            @*<p>Layanan Pelanggan</p>
+            <p>Cara Pembelian</p>
+            <p>Pengiriman</p>*@
+
+
+
+            <div class="col-md-6">
+                <h4>Contact Us</h4>
+                <img src="~/Content/phone2.jpg" height="20" width="20" /> 08172826067
+                <br />
+                <img src="~/Content/email2.png" height="20" width="20" /> yosepsutijo@gmail.com
+                <br />
+                <h4>Lokasi</h4>
+                <img src="~/Content/location.png" height="20" width="20" /> Ds.Grenggeng RT 02/RW 09 No. 10, Karanganyar, Kebumen
+            </div>
+
+            <br />
+            <p>&copy; @DateTime.Now.Year - Niwatori Apps</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
